@@ -25,7 +25,7 @@ public class IncreaseSpeed extends Command {
   @Override
   public void initialize() {
     if (Constants.m_motor11.get() != 0.0) {
-      System.out.println("Motor already running, cannot execute");
+      System.out.println("Motor already running. please wait for it to stop!");
     }
   }
 
