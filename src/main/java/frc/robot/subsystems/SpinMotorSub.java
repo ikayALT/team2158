@@ -21,8 +21,7 @@ public class SpinMotorSub extends SubsystemBase {
 
   @Override
   public void periodic() {
-    randInt = ((int) (Math.random() * 10) + 1);
-    // this replaces my gambling addication
+    //randInt = ((int) (Math.random() * 10) + 1);
   }
 
   public void setMotorSpeed(double speed) {
