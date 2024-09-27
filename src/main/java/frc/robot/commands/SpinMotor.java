@@ -29,8 +29,7 @@ public class SpinMotor extends Command {
   public void initialize() {
     
     if (shootReady == false) {
-      if (botFirstAction == false)
-      {
+      if (botFirstAction == false) {
         System.out.println("intake ready!");
         System.out.println("!! This is the bots first action since start up !!");
         botFirstAction = true;
@@ -41,7 +40,7 @@ public class SpinMotor extends Command {
         shootReady = true;
       }
     }
-    else{
+    else {
       System.out.println("intake ready!");
       shootReady = false;
     }
@@ -53,7 +52,7 @@ public class SpinMotor extends Command {
     if (shootReady == true) {
       spinMotor_Sub.setMotorSpeed(shootSpeed);
     }
-    else{
+    else {
       spinMotor_Sub.setMotorSpeed(intakeSpeed);
     }
   }
