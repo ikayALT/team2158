@@ -6,13 +6,14 @@ package frc.robot;
 
 //import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
+import frc.robot.commands.IncreaseSpeed;
 //import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.SpinMotor;
+import frc.robot.commands.IncreaseSpeed;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.SpinMotorSub;
 
-import org.opencv.core.Mat;
-
+//import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 //import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
@@ -33,18 +34,23 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final SpinMotorSub spinMotorSub = new SpinMotorSub();
   private final SpinMotor spinMotorCmd = new SpinMotor(spinMotorSub);
+  private final IncreaseSpeed increaseSpeedCmd = new IncreaseSpeed(spinMotorSub);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   //private final CommandJoystick m_driverController = new CommandJoystick(OperatorConstants.kDriverControllerPort);
 
-  private static final Joystick kJoystick = new Joystick(0);
+  public static final Joystick kJoystick = new Joystick(0);
   private final Trigger shootTrigger = new JoystickButton(kJoystick, 1);
+  //private final GenericHID m_stick = new GenericHID(0);
   
   
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
+    //while(true) {
+    //  System.out.println(m_stick.getRawAxis(0) + ", " + m_stick.getRawAxis(1));
+    //}
   }
 
   /**
@@ -62,7 +68,9 @@ public class RobotContainer {
     //new Trigger(spinMotorSub::startMotor).onTrue(new SpinMotor(spinMotorSub));
     //spinMotorSub.setDefaultCommand(spinMotorCmd);
     //randInt = spinMotorSub.periodic();
+    spinMotorSub.setDefaultCommand(increaseSpeedCmd);
     shootTrigger.whileTrue(spinMotorCmd);
+
 
 
 
