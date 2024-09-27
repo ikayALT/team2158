@@ -4,8 +4,6 @@
 
 package frc.robot.subsystems;
 
-import org.opencv.core.Mat;
-
 import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -16,7 +14,7 @@ public class SpinMotorSub extends SubsystemBase {
   //CANSparkMax m_motor14 = Constants.m_motor14;
 
   /** Creates a new SpinMotorSub. */
-  int randInt;
+  //int randInt;
   public SpinMotorSub() {}
 
   @Override
