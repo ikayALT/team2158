@@ -33,10 +33,11 @@ public class IncreaseSpeed extends Command {
   @Override
   public void execute() {
     speed = RobotContainer.kJoystick.getY(); // / 127; // Get Y Value of Joystick (-127 - +127)
-    System.out.println(speed);                     // Divide by 127 to get out of (-1 - +1) to set Speed
-    if (Constants.m_motor11.get() == 0.0) {
-      spinMotorSub.setMotorSpeed(speed);
-    }
+    System.out.println(speed);                         // Divide by 127 to get out of (-1 - +1) to set Speed
+    //if (Constants.m_motor11.get() == 0.0) {
+    //  spinMotorSub.setMotorSpeed(speed);
+    //}
+    spinMotorSub.setMotorSpeed(speed);
 
   }
 
