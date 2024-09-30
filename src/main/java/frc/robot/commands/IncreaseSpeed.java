@@ -32,8 +32,8 @@ public class IncreaseSpeed extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    speed = RobotContainer.kJoystick.getY() / 127; // Get Y Value of Joystick (-127 - +127)
-                                                   // Divide by 127 to get out of (-1 - +1) to set Speed
+    speed = RobotContainer.kJoystick.getY(); // / 127; // Get Y Value of Joystick (-127 - +127)
+    System.out.println(speed);                     // Divide by 127 to get out of (-1 - +1) to set Speed
     if (Constants.m_motor11.get() == 0.0) {
       spinMotorSub.setMotorSpeed(speed);
     }
