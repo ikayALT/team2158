@@ -4,6 +4,8 @@
 
 package frc.robot.commands;
 
+import com.revrobotics.CANSparkMax;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
@@ -11,6 +13,7 @@ import frc.robot.subsystems.SpinMotorSub;
 
 public class IncreaseSpeed extends Command {
   SpinMotorSub spinMotorSub;
+  CANSparkMax m_motor11 = Constants.m_motor11;
 
   double speed;
 
@@ -34,9 +37,13 @@ public class IncreaseSpeed extends Command {
   public void execute() {
     speed = RobotContainer.kJoystick.getY(); // / 127; // Get Y Value of Joystick (-127 - +127)
     System.out.println(speed);                         // Divide by 127 to get out of (-1 - +1) to set Speed
-    //if (Constants.m_motor11.get() == 0.0) {
+    
+    // speed = speed of motor 
+
+    //if (m_motor11.get() < 0.1) {
     //  spinMotorSub.setMotorSpeed(speed);
     //}
+    
     spinMotorSub.setMotorSpeed(speed);
 
   }
