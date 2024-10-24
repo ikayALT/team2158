@@ -11,14 +11,14 @@ import frc.robot.Constants;
 
 public class moveRobot extends SubsystemBase {
   // These are placeholder motors
-  // Top Right
-  CANSparkMax m_motor11 = Constants.m_motor11;
-  // Bottom Right
-  CANSparkMax m_motor12 = Constants.m_motor11;
-  // Top Left
-  CANSparkMax m_motor13 = Constants.m_motor11;
-  // Bottom Left
-  CANSparkMax m_motor14 = Constants.m_motor11;
+  // Back Left
+  public static CANSparkMax backLeftMotor= new CANSparkMax(5, CANSparkMax.MotorType.kBrushless);
+  // Front Right
+  public static CANSparkMax frontRightMotor = new CANSparkMax(3, CANSparkMax.MotorType.kBrushless);
+  // Front Left
+  public static CANSparkMax frontLeftMotor = new CANSparkMax(1, CANSparkMax.MotorType.kBrushless);
+  // Back Right
+  public static CANSparkMax backRightMotor = new CANSparkMax(7, CANSparkMax.MotorType.kBrushless);
 
   /** Creates a new moveRobot. */
   public moveRobot() {}
@@ -29,17 +29,16 @@ public class moveRobot extends SubsystemBase {
   }
 
   public void move(double speed) {
-    m_motor11.set(speed);
-    m_motor12.set(speed);
-    m_motor13.set(speed);
-    m_motor14.set(speed);
+    frontLeftMotor.set(speed);
+    frontRightMotor.set(speed);
+    backLeftMotor.set(speed);
+    backRightMotor.set(speed);
   }
 
-  public void turnLeft(double speed) {
-     
-  }
-
-  public void turnRight(double speed) {
-
+  public void turn(double speed) {
+    frontLeftMotor.set(-speed);
+    frontRightMotor.set(speed);
+    backLeftMotor.set(-speed);
+    backRightMotor.set(speed);
   }
 }

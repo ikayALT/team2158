@@ -4,25 +4,29 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
+
 //import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
-import frc.robot.RobotContainer;
 import frc.robot.subsystems.SpinMotorSub;
 import frc.robot.subsystems.moveRobot;
 
 public class IncreaseSpeed extends Command {
   SpinMotorSub spinMotorSub;
   moveRobot moveRobotSub;
+  public static final Joystick kJoystick = new Joystick(0);
 
   double speed;
+  double rotateSpeed;
 
   /** Creates a new increaseSpeed. */
-  public IncreaseSpeed(SpinMotorSub spinMotorSub) {
+  public IncreaseSpeed(SpinMotorSub spinMotorSub, moveRobot moveRobotSub) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.spinMotorSub = spinMotorSub;
-    addRequirements(this.spinMotorSub);
+    this.moveRobotSub = moveRobotSub;
+    addRequirements(this.spinMotorSub, this.moveRobotSub);
   }
 
   // Called when the command is initially scheduled.
@@ -36,8 +40,10 @@ public class IncreaseSpeed extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    speed = RobotContainer.kJoystick.getY(); // / 127; // Get Y Value of Joystick (-127 - +127)
-    System.out.println(speed);                         // Divide by 127 to get out of (-1 - +1) to set Speed
+    speed = kJoystick.getRawAxis(1); 
+    rotateSpeed = kJoystick.getRawAxis(0);
+    System.out.println(speed);            
+    System.out.println(rotateSpeed);            
     
     // speed = speed of motor 
 
@@ -48,6 +54,10 @@ public class IncreaseSpeed extends Command {
     //spinMotorSub.setMotorSpeed(speed);
     
     moveRobotSub.move(speed);
+    if(speed < 0.1 && speed > -0.1)
+    {
+      moveRobotSub.turn(rotateSpeed);
+    }
   }
 
   // Called once the command ends or is interrupted.
