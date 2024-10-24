@@ -10,10 +10,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.SpinMotorSub;
+import frc.robot.subsystems.moveRobot;
 
 public class IncreaseSpeed extends Command {
   SpinMotorSub spinMotorSub;
-  CANSparkMax m_motor11 = Constants.m_motor11;
+  moveRobot moveRobotSub;
 
   double speed;
 
@@ -44,8 +45,9 @@ public class IncreaseSpeed extends Command {
     //  spinMotorSub.setMotorSpeed(speed);
     //}
     
-    spinMotorSub.setMotorSpeed(speed);
-
+    //spinMotorSub.setMotorSpeed(speed);
+    
+    moveRobotSub.move(speed);
   }
 
   // Called once the command ends or is interrupted.
