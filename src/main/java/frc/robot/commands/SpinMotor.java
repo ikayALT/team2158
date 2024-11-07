@@ -9,7 +9,7 @@ import frc.robot.Constants;
 import frc.robot.subsystems.SpinMotorSub;
 
 public class SpinMotor extends Command {
-  SpinMotorSub spinMotor_Sub;
+  SpinMotorSub spinMotorSub;
 
   double intakeSpeed = Constants.intakeSpeed;
   double shootSpeed = Constants.shootSpeed;
@@ -20,8 +20,8 @@ public class SpinMotor extends Command {
 
   /** Creates a new SpinMotor. */
   public SpinMotor(SpinMotorSub spinMotor_Sub) {
-    this.spinMotor_Sub = spinMotor_Sub;
-    addRequirements(this.spinMotor_Sub);
+    this.spinMotorSub = spinMotor_Sub;
+    addRequirements(this.spinMotorSub);
   }
 
   // Called when the command is initially scheduled.
@@ -50,17 +50,17 @@ public class SpinMotor extends Command {
   @Override
   public void execute() {
     if (shootReady == true) {
-      spinMotor_Sub.setMotorSpeed(shootSpeed);
+      spinMotorSub.setMotorSpeed(shootSpeed);
     }
     else {
-      spinMotor_Sub.setMotorSpeed(intakeSpeed);
+      spinMotorSub.setMotorSpeed(intakeSpeed);
     }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    spinMotor_Sub.setMotorSpeed(stopSpeed);
+    spinMotorSub.setMotorSpeed(stopSpeed);
   }
 
   // Returns true when the command should end.
